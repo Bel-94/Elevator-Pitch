@@ -1,14 +1,13 @@
-from email.policy import default
-from . import db,login_manager
+from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
+# from email.policy import default
 from flask_login import UserMixin
+from . import login_manager
 
 
 
 
-# user
-# fields  id,username,email,password 
-# methods   saveuser, delete user
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -20,20 +19,14 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),nullable = False,unique = True)
     bio = db.Column(db.String(255))
-    pic_path = db.Column(db.String(255),default='avtar.png')
+    pics_path = db.Column(db.String(255),default='avtar.png')
     email = db.Column(db.String(255),nullable = False,unique = True)
     secure_password = db.Column(db.String(255),nullable = False) 
     pitches = db.relationship('Pitch',backref = 'user',lazy = 'dynamic')
    
 
 
-    def save_user(self):
-        db.session.add(self)
-        db.session.commit()
 
-    def delete_user(self):
-        db.session.delete(self)
-        db.session.commit()
 
     @property
     def password(self):
@@ -50,8 +43,6 @@ class User(UserMixin,db.Model):
         return f'User: {self.username} {self.email}'
 
 
-#  id(PK),title,category,pitch,user_id(FK),upvote(rl),downvote(rl),comment(rl)
-# methods  => save_pitch,delete_pitch,view_all
 class Pitch(db.Model):
     __tablename__ = 'pitches'
 
