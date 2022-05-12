@@ -21,7 +21,7 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),nullable = False,unique = True)
     bio = db.Column(db.String(255))
-    pics_path = db.Column(db.String(255),default='avtar.png')
+    profile_pic_path = db.Column(db.String(255))
     email = db.Column(db.String(255),nullable = False,unique = True)
     secure_password = db.Column(db.String(255),nullable = False) 
     pitches = db.relationship('Pitch',backref = 'user',lazy = 'dynamic')
