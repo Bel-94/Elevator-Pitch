@@ -2,8 +2,11 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,SubmitField, BooleanField
 from wtforms.validators import DataRequired,Email,EqualTo
 from ..models import User
-from wtforms import ValidationError
+# from wtforms import ValidationError
+# from config import Config
 
+# WTF_CSRF_ENABLED = False
+# WTF_CSRF_SECRET_KEY = 'a random string'
 
 class RegistrationForm(FlaskForm):
     email = StringField('Your Email Address',validators=[DataRequired(),Email()])
@@ -13,13 +16,13 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
 # custom validators of the registration form
-    def validate_email(self,data_field):
-            if User.query.filter_by(email =data_field.data).first():
-                raise ValidationError('There is an account with that email')
+    # def validate_email(self,data_field):
+    #         if User.query.filter_by(email =data_field.data).first():
+    #             raise ValidationError('There is an account with that email')
 
-    def validate_username(self,data_field):
-        if User.query.filter_by(username = data_field.data).first():
-            raise ValidationError('That username is taken')
+    # def validate_username(self,data_field):
+    #     if User.query.filter_by(username = data_field.data).first():
+    #         raise ValidationError('That username is taken')
 
 class LoginForm(FlaskForm):
     email = StringField('Your Email Address',validators=[DataRequired(),Email()])

@@ -19,20 +19,18 @@ class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),nullable = False,unique = True)
+    username = db.Column(db.String(255),index = True)
     bio = db.Column(db.String(255))
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     profile_pic_path = db.Column(db.String(255))
-    email = db.Column(db.String(255),nullable = False,unique = True)
-    secure_password = db.Column(db.String(255),nullable = False) 
+    email = db.Column(db.String(255),unique = True, index=True)
+    password_secure = db.Column(db.String(255)) 
+    
     pitches = db.relationship('Pitch',backref = 'user',lazy = 'dynamic')
     comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
-    upvotes = db.relationship('UpVotes',backref = 'user',lazy = "dynamic")
+    upvotes = db.relationship('UpVote',backref = 'user',lazy = "dynamic")
     downvote = db.relationship('DownVote',backref = 'user',lazy = "dynamic")
    
-
-
-
-
     @property
     def password(self):
         raise AttributeError('You cannot Read Attribute Error')
@@ -47,6 +45,16 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User: {self.username} {self.email}'
 
+class Role(db.Model):
+    __tablename__ = 'roles'
+
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255))
+    users = db.relationship('User',backref = 'role',lazy="dynamic")
+
+
+    def __repr__(self):
+        return f'User {self.name}'
 
 class Pitch(db.Model):
     __tablename__ = 'pitches'
@@ -54,11 +62,13 @@ class Pitch(db.Model):
 
 
     id = db.Column(db.Integer,primary_key = True)
-    title  = db.Column(db.String(255),nullable = False)
-    category = db.Column(db.String(255),nullable = False)
-    content = db.Column(db.String(255),nullable = False)
+    title  = db.Column(db.String(255))
+    category = db.Column(db.String(255))
+    content = db.Column(db.String(255))
     posted = db.Column(db.DateTime,default=datetime.utcnow)
+
     author = db.Column(db.Integer, db.ForeignKey('users.id'))
+
     comments  = db.relationship('Comment',backref = 'pitch',lazy = 'dynamic')
     upvotes = db.relationship('UpVote',backref = 'pitch',lazy = 'dynamic')
     downvotes = db.relationship('DownVote',backref = 'pitch',lazy = 'dynamic')
@@ -69,9 +79,6 @@ class Pitch(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def delete_pitch(self):
-        db.session.delete(self)
-        db.session.commit()
 
     @classmethod
     def get_pitch(cls,id):
@@ -84,7 +91,7 @@ class Pitch(db.Model):
         return pitches
 
     def __repr__(self):
-        return f'User: {self.content}'
+        return f'Pitch: {self.title}'
 
 class Comment(db.Model):
 
@@ -93,16 +100,13 @@ class Comment(db.Model):
     id  = db.Column(db.Integer,primary_key = True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-    comment = db.Column(db.String(255), nullable = False)
+    comment = db.Column(db.String(255))
 
 
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
-    def delete_comment(self):
-        db.session.add(self)
-        db.session.commit()
 
     @classmethod
     def get_comments(cls,id):
@@ -114,8 +118,7 @@ class Comment(db.Model):
         return comments
 
 
-        def __repr__(self):
-            return f'User: {self.comment}'
+    
 
 class UpVote(db.Model):
 
