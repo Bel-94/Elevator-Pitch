@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 body{
-    background-image: url(../images/back3.jpg);
+    /* background-image: #659dbd; */
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -12,7 +12,7 @@ body{
 
 h2{
     
-    color: #fff;
+    color: #c38d9e;
     font-family: 'Macondo', cursive;
     font-size: 4vw;
 }

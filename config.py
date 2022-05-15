@@ -4,7 +4,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://myles:m-pp2@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SESSION_COOKIE_SECURE = False
+    SECRET_KEY='Belminnyx'
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'

@@ -10,10 +10,10 @@ from ..email import mail_message
 # WTF_CSRF_ENABLED = False
 # WTF_CSRF_SECRET_KEY = 'a random string'
 
-@auth.route('/')
-def home():
+# @auth.route('/')
+# def home():
 
-    return redirect(url_for('auth.login'))
+#     return redirect(url_for('auth.login'))
 
 
 
@@ -26,7 +26,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to Pitches-Pod","email/welcome_user",user.email,user=user)
+        # mail_message("Welcome to Pitches-Pod","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         title = "New Account"

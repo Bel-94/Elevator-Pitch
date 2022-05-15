@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 {% block content %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
-<body>
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
     
     <div class="container">
         <div class="main" >
-            <h2>Welcome to Pitch</h2>
-            <a href="/pitch/new" id="new_pitch">Add pitch</a>
+            <h2 style="color: #d83f87; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif " >Welcome to Pitch-Pod</h2>
+            <p style="font-size:larger; color: white" >In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?</p><br>
+            <a href="/pitch/new" id="new_pitch" style="color: #d83f87" >Add pitch</a>
         </div>
         
         <div id="content" style="margin-top:2vw;">

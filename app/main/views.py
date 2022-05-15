@@ -80,7 +80,7 @@ def pitch():
         category = pitch_form.category.data
         pitch_title = pitch_form.pitch_title.data
 
-        new_pitch = Pitch(pitch_title=pitch_title, content=content, category = category, user = current_user)
+        new_pitch = Pitch(title=pitch_title, content=content, category = category, user = current_user)
         new_pitch.save_pitch()
 
         return redirect(url_for('main.index'))
@@ -109,7 +109,7 @@ def comment(pitch_id):
         return redirect(url_for('main.comment', pitch_id = pitch_id))
 
     all_comments = Comment.query.filter_by(pitch_id=pitch_id).all()
-    title = f'{pitch.pitch_title}'
+    title = f'{pitch.title}'
     return render_template('comment.html', title = title, comment_form = comment_form, pitch = pitch, comment = all_comments)
 
 
@@ -120,8 +120,8 @@ def like(pitch_id):
     View like function that returns the like page and data
     '''
     pitch = Pitch.query.get(pitch_id)
-    new_like = UpVote(pitch=pitch, like=0)
-    new_like.save_likes()
+    new_like = UpVote(pitch=pitch, upvote=0)
+    new_like.save_upvote()
     # save_likes() is from models.py(class like)
 
     return redirect(url_for('main.index') )
@@ -134,8 +134,8 @@ def dislike(pitch_id):
     View dislike function that returns the dislike page and data
     '''
     pitch = Pitch.query.get(pitch_id)
-    new_dislike = DownVote(pitch=pitch, dislike=0)
-    new_dislike.save_dislikes()
+    new_dislike = DownVote(pitch=pitch, downvote=0)
+    new_dislike.save_downvote()
     # save_likes() is from models.py(class like)
 
     return redirect(url_for('main.index') )

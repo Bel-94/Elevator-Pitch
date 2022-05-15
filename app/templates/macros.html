@@ -10,12 +10,12 @@
                     <div class="thumbnail" style="background-color: transparent;">
                         <div class="row">
                             <div class="col-md-2 img-responsive">
-                                     <img src="{{url_for('static',filename = pitch.user.profile_pic_path)}}" alt="" class="img-thumbnail rounded-circle">
+                                
                             </div>
                             <div class="col-md-10">
                                 <p class="pitch-metadata">
                                     <h3 class="inline">
-                                        <a class="pitch-title" id="pitch-title" href="#">{{pitch.pitch_title}}</a>
+                                        <a class="pitch-title" id="pitch-title" href="#">{{pitch.title}}</a>
                                     </h3>
                                     <small class="text-muted">  Posted on {{pitch.posted.strftime('%d/%m/%Y')}} | {{pitch.category}}</small>
                                    

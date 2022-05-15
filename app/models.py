@@ -37,10 +37,10 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self,password):
-        self.secure_password = generate_password_hash(password)
+        self.password_secure = generate_password_hash(password)
 
     def verify_password(self,password):
-        return check_password_hash(self.secure_password,password)
+        return check_password_hash(self.password_secure,password)
 
     def __repr__(self):
         return f'User: {self.username} {self.email}'
@@ -131,7 +131,7 @@ class UpVote(db.Model):
 
     def save_upvote(self):
         db.session.add(self)
-        db.session.commit(self)
+        db.session.commit()
 
     def add_upvotes(cls,id):
         upvote = UpVote(user = current_user, pitch_id=id)
