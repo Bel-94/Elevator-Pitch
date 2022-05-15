@@ -1,11 +1,11 @@
-<h1>News~Star</h1>
+<h1>Pitch~Pod</h1>
 
 <h2>By Belinda Ntinyari<h2>
 
-<p>This is a web app which a user can use to catch-up with any news across the globe.</p>
+<p>This is a web app where users can access any kind of pitch as well as add their own pitch.</p>
 
 <h3>Description </h3>
-<p>This is an application that contains sources of news from across the globe. A user can use use to be keep up and get updated on any type of news.</p>
+<p>This is an application that contains popular pitches across different fields. Users can add their own pitches, comment, upvote and downvote the quotes.</p>
 
 <h3>Requirements for Installation</h3>
 <ul>
@@ -20,7 +20,7 @@ To get the code:
     <li>You can fork the project to add it as one of your repositories.
     <li>Clone the repo link from github</li>
     <li>Then clone the link in your machine using the following command: 
-    <p>git clone https://github.com/Bel-94/News-Star.git </p>
+    <p>git clone https://github.com/Bel-94/Elevator-Pitch.git</p>
     </li>
 </ol>
 
