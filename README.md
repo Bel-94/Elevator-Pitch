@@ -28,10 +28,12 @@ To get the code:
 <p>The user is able to</p>
 
 <ul>
-    <li>The user will be able to see various news sources on the homepage of the application.</li>
-    <li>The will be able to select a news source and see all news articles from the selected news source in the applicaton.</li>
-    <li>The user can see the image, description and the time a news article was created. </li>
-    <li>The user can also click on an article and read the full article on the source website. </li>
+    <li>The user will be able to see the pitches other people have posted.</li>
+    <li>The user will be able to vote on the pitch they liked and give it a downvote or upvote.</li>
+    <li>The user can leave a comment. </li>
+    <li>The user can view the pitches I have created in my profile page. </li>
+    <li>The user can comment on the different pitches and leave feedback.</li>
+    <li>The user can submit and view pitch from the different categories.</li>
 </ul>
 
 <h3>Technologies Used</h3>
