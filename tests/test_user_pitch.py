@@ -4,7 +4,7 @@ from app import db
 
 class Pitch(unittest.TestCase):
     def setUp(self):
-        self.new_user = User(username="Test",password = 'banana')
+        self.new_user = User(username="Test",password = 'codes')
         self.new_pitch = Pitch(pitch_title = 'Test',content = 'Test',category = 'Test',author = self.new_user)
         self.new_comment = Comment(content = 'Test',category = 'Test',author = self)
 
@@ -35,7 +35,7 @@ class Pitch(unittest.TestCase):
     class UserModelTest(unittest.TestCase):
         
      def setUp(self):
-        self.new_user = User(password = 'banana')
+        self.new_user = User(password = 'codes')
 
     def test_password_setter(self):
         '''
